@@ -24,19 +24,19 @@ Syntax
 		ReadOnly<int> number = 10; // or: ReadOnly<int> number(10);
 
 		Foo() {}
-		Foo() { name = "John"; } // Foo must be a friend class of ReadOnly
+		Foo(const string& newName) { name = newName; } // Foo must be a friend class of ReadOnly
 
 		// Optional setter
 		void setName(const string& newName) { /* ... */ }
 	};
 
-	Foo object;
+	Foo object("John");
 
-	cout << object.name << ' ' << object.number endl;
+	cout << object.name << ' ' << object.number << endl;
 
 	// ERROR -> object.name = "Daniel";
 
-	string objectName = objec.name;
+	string objectName = object.name;
 	string myName = "Daniel";
 
 	object.setName(myName);
