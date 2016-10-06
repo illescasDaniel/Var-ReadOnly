@@ -2,7 +2,6 @@
 #define ReadOnly_hpp
 
 #include <ostream>
-#include <typeinfo>
 
 #define template_anyType template <typename anyType>
 
