@@ -3,6 +3,7 @@
 
 using namespace std;
 
+/// Example of a class using ReadOnly members
 class Human {
 	
 public:
