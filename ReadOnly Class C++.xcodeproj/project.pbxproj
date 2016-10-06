@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		65A9E1601DA654B90088241B /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65A9E15F1DA654B90088241B /* main.cpp */; };
+		65A9E16A1DA67A4C0088241B /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 65A9E1691DA67A4C0088241B /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +26,10 @@
 /* Begin PBXFileReference section */
 		65A9E15C1DA654B90088241B /* ReadOnly Class C++ */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "ReadOnly Class C++"; sourceTree = BUILT_PRODUCTS_DIR; };
 		65A9E15F1DA654B90088241B /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		65A9E1661DA654E10088241B /* ReadOnly.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ReadOnly.hpp; sourceTree = "<group>"; };
+		65A9E1681DA671510088241B /* Human.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Human.hpp; sourceTree = "<group>"; };
+		65A9E1691DA67A4C0088241B /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		65A9E16B1DA67A550088241B /* LICENCE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENCE; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +46,8 @@
 		65A9E1531DA654B90088241B = {
 			isa = PBXGroup;
 			children = (
+				65A9E16B1DA67A550088241B /* LICENCE */,
+				65A9E1691DA67A4C0088241B /* README.md */,
 				65A9E15E1DA654B90088241B /* ReadOnly Class C++ */,
 				65A9E15D1DA654B90088241B /* Products */,
 			);
@@ -57,9 +64,19 @@
 		65A9E15E1DA654B90088241B /* ReadOnly Class C++ */ = {
 			isa = PBXGroup;
 			children = (
+				65A9E1671DA671420088241B /* include */,
 				65A9E15F1DA654B90088241B /* main.cpp */,
 			);
 			path = "ReadOnly Class C++";
+			sourceTree = "<group>";
+		};
+		65A9E1671DA671420088241B /* include */ = {
+			isa = PBXGroup;
+			children = (
+				65A9E1661DA654E10088241B /* ReadOnly.hpp */,
+				65A9E1681DA671510088241B /* Human.hpp */,
+			);
+			name = include;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -120,6 +137,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65A9E16A1DA67A4C0088241B /* README.md in Sources */,
 				65A9E1601DA654B90088241B /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -217,6 +235,7 @@
 		65A9E1641DA654B90088241B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				DEVELOPMENT_TEAM = PRK6268SLD;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -225,6 +244,7 @@
 		65A9E1651DA654B90088241B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				DEVELOPMENT_TEAM = PRK6268SLD;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
