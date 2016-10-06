@@ -35,25 +35,18 @@ public:
 	}
 	
 	// Operators overloading
-	template_anyType anyType operator+(const anyType& variable) const { return value + variable; }
-	template_anyType anyType operator-(const anyType& variable) const { return value - variable; }
-	template_anyType anyType operator*(const anyType& variable) const { return value * variable; }
-	template_anyType anyType operator/(const anyType& variable) const { return value / variable; }
-	template_anyType anyType operator%(const anyType& variable) const { return value % variable; }
+	template_anyType anyType operator+(const anyType& var) const { return value + var; }
+	template_anyType anyType operator-(const anyType& var) const { return value - var; }
+	template_anyType anyType operator*(const anyType& var) const { return value * var; }
+	template_anyType anyType operator/(const anyType& var) const { return value / var; }
+	template_anyType anyType operator%(const anyType& var) const { return value % var; }
 	
-	template_anyType bool operator==(const anyType& variable) const { return value == variable; }
-	template_anyType bool operator!=(const anyType& variable) const { return value != variable; }
-	template_anyType bool operator< (const anyType& variable) const { return value < variable;  }
-	template_anyType bool operator<=(const anyType& variable) const { return value <= variable; }
-	template_anyType bool operator> (const anyType& variable) const { return value > variable;  }
-	template_anyType bool operator>=(const anyType& variable) const { return value >= variable; }
-	
-	bool operator==(const char* variable) const { return value == variable; }
-	bool operator!=(const char* variable) const { return value != variable; }
-	bool operator< (const char* variable) const { return value < variable;  }
-	bool operator<=(const char* variable) const { return value <= variable; }
-	bool operator> (const char* variable) const { return value > variable;  }
-	bool operator>=(const char* variable) const { return value >= variable; }
+	template_anyType bool operator==(const anyType& var) const { return value == var; }
+	template_anyType bool operator!=(const anyType& var) const { return value != var; }
+	template_anyType bool operator< (const anyType& var) const { return value < var;  }
+	template_anyType bool operator<=(const anyType& var) const { return value <= var; }
+	template_anyType bool operator> (const anyType& var) const { return value > var;  }
+	template_anyType bool operator>=(const anyType& var) const { return value >= var; }
 	
 	// friend operators overloading
 	template_anyType friend anyType operator+(const anyType& var, const ReadOnly<Type>& var2) { return var + var2.value; }

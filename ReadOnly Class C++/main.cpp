@@ -37,6 +37,10 @@ int main(int argc, const char * argv[]) {
 	
 	int age = daniel.age; // operator anyType() const {...}
 	cout << age << endl;
-
+	
+	cout << (daniel.name == "Daniel") << endl;
+	cout << (daniel.name > "Daniel") << endl;
+	cout << ("Daniel" < daniel.name) << endl;
+	
     return 0;
 }
