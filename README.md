@@ -17,6 +17,8 @@ Add your friend class in the ReadOnly class.
 Syntax
 ------
 ```C++
+	#include "ReadOnly.hpp"
+	
 	class Foo {
 	
 	public:
