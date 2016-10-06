@@ -5,42 +5,62 @@ How to make it work
 ------
 Add your friend class in the ReadOnly class.  
 ```C++
-	class ReadOnly {
+class ReadOnly {
 
-		/* Friend classes */
-		friend class Foo;
-	
-		/* ... */
-	};
+/* Friend classes */
+friend class Foo;
+
+/* ... */
+};
 ```
 
 Syntax
 ------
 ```C++
-	#include "ReadOnly.hpp"
-	
-	class Foo {
-	
-	public:
-		ReadOnly<string> name;
-		ReadOnly<int> number = 10; // or: ReadOnly<int> number(10);
+#include "ReadOnly.hpp"
 
-		Foo() {}
-		Foo(const string& newName) { name = newName; } // Foo must be a friend class of ReadOnly
+class Foo {
 
-		// Optional setter
-		void setName(const string& newName) { /* ... */ }
-	};
+public:
+ReadOnly<string> name;
+ReadOnly<int> number = 10; // or: ReadOnly<int> number(10);
 
-	Foo object("John");
+Foo() {}
+Foo(const string& newName) { name = newName; } // Foo must be a friend class of ReadOnly
 
-	cout << object.name << ' ' << object.number << endl;
+// Optional setter
+void setName(const string& newName) { /* ... */ }
+};
 
-	// ERROR -> object.name = "Daniel";
+Foo object("John");
 
-	string objectName = object.name;
-	string myName = "Daniel";
+cout << object.name << ' ' << object.number << endl;
 
-	object.setName(myName);
+// ERROR -> object.name = "Daniel";
+
+string objectName = object.name;
+string myName = "Daniel";
+
+object.setName(myName);
 
 ```
+
+Motivation
+--------
+In OOP when you use classes you have attributes and methods. 
+Problem is that on some languages, as C++, if you want people to access your variables they
+have to use (most of the times) getters, so instead of something like: 
+
+```C++
+Human daniel;  
+cout << daniel.age << endl;  
+```  
+
+You would have to do this: 
+
+```C++
+Human daniel;  
+cout << daniel.getAge() << endl; 
+```
+
+Instead of accessing the attribute of the object, its property, you need to call a function, which doesn't make sense in OOP.
