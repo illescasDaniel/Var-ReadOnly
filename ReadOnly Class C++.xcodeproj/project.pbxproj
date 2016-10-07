@@ -26,7 +26,6 @@
 		65A9E15C1DA654B90088241B /* ReadOnly Class C++ */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "ReadOnly Class C++"; sourceTree = BUILT_PRODUCTS_DIR; };
 		65A9E15F1DA654B90088241B /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		65A9E1661DA654E10088241B /* ReadOnly.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ReadOnly.hpp; sourceTree = "<group>"; };
-		65A9E1681DA671510088241B /* Human.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Human.hpp; sourceTree = "<group>"; };
 		65A9E1691DA67A4C0088241B /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		65A9E16B1DA67A550088241B /* LICENCE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENCE; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -73,7 +72,6 @@
 			isa = PBXGroup;
 			children = (
 				65A9E1661DA654E10088241B /* ReadOnly.hpp */,
-				65A9E1681DA671510088241B /* Human.hpp */,
 			);
 			name = include;
 			sourceTree = "<group>";
@@ -271,6 +269,7 @@
 				65A9E1651DA654B90088241B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

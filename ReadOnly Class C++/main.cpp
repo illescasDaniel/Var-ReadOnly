@@ -1,46 +1,44 @@
 #include <iostream>
 #include "ReadOnly.hpp"
-#include "Human.hpp" // Class example
 
 using namespace std;
 
+class Human {
+public:
+	ReadOnly<int> age;
+	ReadOnly<string> name;
+	
+	Human() {}
+	Human(const int& age, const string& name) {
+		this->age = age;
+		this->name = name;
+	}
+	
+	// Optional Setters
+	void setAge(const int& age) {
+		this->age = age;
+	}
+	void setName(const string& name) {
+		this->name = name;
+	}
+};
+
 int main(int argc, const char * argv[]) {
 	
-	Human daniel;
-	cout << daniel.age << endl;
+	Human daniel(20, "Daniel");
 	
-	daniel.setAge(40);
+	cout << daniel.name << ' ' << daniel.age << endl;
 	
-	cout << daniel.age << endl;
+	string name = daniel.name;
+	string lastName = " Illescas";
 	
-	cout << daniel.name << endl;
+	string completeName = daniel.name + lastName;
 	
-	daniel.setName("Daniel");
-	cout << daniel.name << '\n' << endl;
+	daniel.setName(completeName);
+	daniel.setAge(21);
 	
-	Human daniel2(20, "Daniel", 170);
-	cout << to_string(daniel2) << endl;
-	
-	daniel2.setHeight(400);
-	
-	cout << daniel2.height << endl;
-	
-	cout << daniel2.age + 10.6 << endl;
-	
-	cout << boolalpha << (daniel2.age == 10.6) << endl;
-	cout << (daniel2.age < 21) << endl;
-	
-	
-	cout << (10.1 + daniel.age + 20.9) << endl;
-	
-	cout << (10.7 == daniel.age) << endl;
-	
-	int age = daniel.age; // operator anyType() const {...}
-	cout << age << endl;
-	
-	cout << (daniel.name == "Daniel") << endl;
-	cout << (daniel.name > "Daniel") << endl;
-	cout << ("Daniel" < daniel.name) << endl;
-	
+	cout << "Name and last name: " << daniel.name << endl;
+	cout << 1 + daniel.age + 10 << endl;
+
     return 0;
 }

@@ -15,17 +15,17 @@ class ReadOnly {
 	
 	Type value;
 	
+	ReadOnly() {}
+	ReadOnly(const Type& variable) {
+		this->value = variable;
+	}
+	
 	ReadOnly & operator=(const Type& variable) {
 		this->value = variable;
 		return *this;
 	}
 	
 public:
-	
-	ReadOnly() {}
-	ReadOnly(const Type& variable) {
-		this->value = variable;
-	}
 	
 	// Cast ReadOnly variable to any type
 	template_anyType
