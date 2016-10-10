@@ -51,8 +51,9 @@ object.name = "aaaaaaaaaaaaaaaaaaaab" // ERROR
 
 string objectName = object.name;  
 string myName = "Daniel Illecas";  
-
 object.name = myName;  
+
+object.number = 10; // ERROR  
 
 ```
 
