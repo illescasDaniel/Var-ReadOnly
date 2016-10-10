@@ -7,7 +7,7 @@ Add your friend class in the ReadOnly class.
 ```C++
 class ReadOnly {
 
-	/* Friend classes */
+	/** Friend classes **/
 	friend class Foo;
 
 	/* ... */
@@ -21,27 +21,38 @@ Syntax
 
 class Foo {
 
+	static bool setName(const string& value) {
+		return (value.length() <= 20);
+	}
+
 public:
-	ReadOnly<string> name;
-	ReadOnly<int> number = 10; // or: ReadOnly<int> number(10);
+
+	// Initialize variable specifying a setter function and a default value
+	ReadOnly<string> name{Foo::setName, ""}; 
+
+	// This variable has a default value of 0, and can't be changed externally 
+	// You could change its value internally accessing their value property (number.value) 
+	ReadOnly<int> number{0}; 
 
 	Foo() {}
-	Foo(const string& newName) { name = newName; } // Foo must be a friend class of ReadOnly
 
-	// Optional setter
-	void setName(const string& newName) { /* ... */ }
+	// This will assing the new value only if the specific setter function returns true
+	Foo(const string& name) { 
+		this->name = newName; 
+	}
 };
 
 Foo object("John");
 
-cout << object.name << ' ' << object.number << endl;
+cout << object.name << ' ' << object.number << endl; // Output -> John 0
 
-// ERROR -> object.name = "Daniel";
+object.name = "Daniel"; // OK  
+object.name = "aaaaaaaaaaaaaaaaaaaab" // ERROR
 
-string objectName = object.name;
-string myName = "Daniel";
+string objectName = object.name;  
+string myName = "Daniel Illecas";  
 
-object.setName(myName);
+object.name = myName;  
 
 ```
 
@@ -63,4 +74,8 @@ Human daniel;
 cout << daniel.getAge() << endl; 
 ```
 
-Instead of accessing the attribute of the object, its property, you need to call a function, which doesn't make sense in OOP.
+Instead of accessing the attribute of the object, its property, you need to call a function, which doesn't make sense in OOP.  
+
+With the ReadOnly class you can declare a variable which value will only change (externally) if a setter function is specified.  
+
+**Note**: by default constructors are private so you can only declare variables inside a friend class.

@@ -5,24 +5,50 @@
 
 #define template_anyType template <typename anyType>
 
-/// Class to make read only variables. Their values can be change only in the classes that uses ReadOnly variables, but not externally
+using namespace std;
+
+// By default, you can't change the value of the read only variables
+template <typename Type>
+bool defaultSetterCondition(const Type& variable) {
+	return false;
+}
+
+/// Class to make read only variables with an optional setter to change their values
 template <typename Type>
 class ReadOnly {
-	
-	/* Friend classes (VERY IMPORTANT) */
+
+	/** FRIEND CLASSES (Important) **/
 	friend class Human;
 	/* ... */
 	
+	/** VARIABLES **/
+	
+	// A setter function for the read only variable
+	typedef bool (* setFunction)(const Type& variable);
+	setFunction setterCondition = defaultSetterCondition;
+	
+	bool hasASetter = false;
+	
 	Type value;
 	
-	ReadOnly() {}
+	/** CONSTRUCTORS **/
+	
+	// You may enable the default constructor if you want -> ReadOnly() { }
+	
 	ReadOnly(const Type& variable) {
 		this->value = variable;
 	}
 	
-	ReadOnly & operator=(const Type& variable) {
-		this->value = variable;
-		return *this;
+	// Specify a settter function and a default value
+	template <typename Function>
+	ReadOnly(Function& setterCondition, const Type& variable) {
+		
+		hasASetter = true;
+		this->setterCondition = setterCondition;
+		
+		if (setterCondition(variable) == true) {
+			this->value = variable;
+		}
 	}
 	
 public:
@@ -33,7 +59,30 @@ public:
 		return value;
 	}
 	
-	// Operators overloading
+	// Display ReadOnly variables with cout (ostream)
+	template <typename T>
+	friend ostream & operator<<(ostream& os, const ReadOnly<T>& readOnlyVar) {
+		return os << readOnlyVar.value;
+	}
+	
+	/** Operators overloading **/
+	
+	// Assign new value if it matches the setter condition
+	ReadOnly & operator=(const Type& variable) {
+		
+		if (setterCondition(variable) == true) {
+			this->value = variable;
+		}
+		else if (!hasASetter) {
+			cerr << "Error: attempting to write on a read only variable which doesn't have a setter" << endl;
+		}
+		else {
+			cerr << "Error: new value doesn't match setter condition" << endl;
+		}
+		
+		return *this;
+	}
+	
 	template_anyType anyType operator+(const anyType& var) const { return value + var; }
 	template_anyType anyType operator-(const anyType& var) const { return value - var; }
 	template_anyType anyType operator*(const anyType& var) const { return value * var; }
@@ -60,12 +109,6 @@ public:
 	template_anyType friend bool operator<=(const anyType& var, const ReadOnly<Type>& var2) { return var <= var2.value; }
 	template_anyType friend bool operator> (const anyType& var, const ReadOnly<Type>& var2) { return var > var2.value;  }
 	template_anyType friend bool operator>=(const anyType& var, const ReadOnly<Type>& var2) { return var >= var2.value; }
-	
-	// Display ReadOnly variables with cout (ostream)
-	template <typename T>
-	friend std::ostream & operator<<(std::ostream& os, const ReadOnly<T>& readOnlyVar) {
-		return os << readOnlyVar.value;
-	}
 };
 
 
