@@ -3,8 +3,9 @@
 
 using namespace std;
 
+/// Class example
 class Human {
-	
+
 	static bool setAge(const int& value) {
 		return (value >= 0 && value <= 150);
 	}
@@ -15,7 +16,7 @@ class Human {
 public:
 	ReadOnly<int> age{Human::setAge, 0};
 	ReadOnly<string> name{Human::setName, ""};
-	ReadOnly<string> lastName{"default"};
+	ReadOnly<string> lastName{"12.1"};
 	
 	Human() { }
 	Human(const int& age, const string& name) {
@@ -57,8 +58,10 @@ int main(int argc, const char * argv[]) {
 	cout << daniel.name << endl;
 	
 	daniel.lastName = "hello";
-	cout << daniel.lastName << endl;
-	
+	cout << daniel.lastName << endl;		// string
+	cout << stoi(daniel.lastName) << endl;	// int
+	cout << stof(daniel.lastName) << endl;	// float
+
 	//
 	
 	Human sofia(20, "Sofía");

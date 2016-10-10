@@ -14,7 +14,7 @@ using namespace std;
 template <typename Type>
 class ReadOnly {
 
-	/** FRIEND CLASSES (Important) **/
+	/* FRIEND CLASSES (Important) */
 	friend class Human;
 	/* ... */
 	
@@ -23,7 +23,7 @@ class ReadOnly {
 		return false;
 	}
 	
-	/** VARIABLES **/
+	/* VARIABLES */
 	
 	// A setter function for the read only variable
 	typedef bool (* setFunction)(const Type& variable);
@@ -33,7 +33,7 @@ class ReadOnly {
 	
 	Type value;
 	
-	/** CONSTRUCTORS **/
+	/* CONSTRUCTORS */
 	
 	// You may enable the default constructor if you want -> ReadOnly() { }
 	
@@ -41,7 +41,7 @@ class ReadOnly {
 		this->value = variable; // Calls the operator=
 	}
 	
-	// Specify a settter function and a default value
+	/// Specify a settter function and a default value
 	ReadOnly(setFunction setterCondition, const Type& variable) {
 		
 		hasASetter = true;
@@ -55,23 +55,33 @@ class ReadOnly {
 		}
 	}
 	
+	
 public:
 	
-	// Cast ReadOnly variable to any type
+	/// Cast ReadOnly variable to any type
 	template_anyType
 	operator anyType() const {
 		return value;
 	}
 	
-	// Display ReadOnly variables with cout (ostream)
-	template <typename T>
-	friend ostream & operator<<(ostream& os, const ReadOnly<T>& readOnlyVar) {
+	/// Display ReadOnly variables with cout (ostream)
+	friend ostream & operator<<(ostream& os, const ReadOnly& readOnlyVar) {
 		return os << readOnlyVar.value;
 	}
 	
-	/** Operators overloading **/
+	// String to other type conversion
+	friend int stoi(const ReadOnly& readOnlyVar) { return stoi(readOnlyVar.value); }
+	friend long stol(const ReadOnly& readOnlyVar) { return stol(readOnlyVar.value); }
+	friend float stof(const ReadOnly& readOnlyVar) { return stof(readOnlyVar.value); }
+	friend double stod(const ReadOnly& readOnlyVar) { return stod(readOnlyVar.value); }
+	friend long long stoll(const ReadOnly& readOnlyVar) { return stoll(readOnlyVar.value); }
+	friend long double stold(const ReadOnly& readOnlyVar) { return stold(readOnlyVar.value); }
+	friend unsigned long stoul(const ReadOnly& readOnlyVar) { return stoul(readOnlyVar.value); }
+	friend unsigned long long stoull(const ReadOnly& readOnlyVar) { return stoull(readOnlyVar.value); }
 	
-	// Assign new value if it matches the setter condition
+	/* Operators overloading */
+	
+	/// Assign new value if it matches the setter condition
 	ReadOnly & operator=(const Type& variable) {
 		
 		if (setterCondition(variable) == true) {
