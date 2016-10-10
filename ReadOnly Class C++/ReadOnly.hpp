@@ -1,3 +1,6 @@
+// MIT License
+// Author: Daniel Illescas Romero (2016)
+
 #ifndef ReadOnly_hpp
 #define ReadOnly_hpp
 
@@ -7,12 +10,6 @@
 
 using namespace std;
 
-// By default, you can't change the value of the read only variables
-template <typename Type>
-bool defaultSetterCondition(const Type& variable) {
-	return false;
-}
-
 /// Class to make read only variables with an optional setter to change their values
 template <typename Type>
 class ReadOnly {
@@ -21,12 +18,17 @@ class ReadOnly {
 	friend class Human;
 	/* ... */
 	
+	// By default, you can't change the value of the read only variables
+	static bool defaultSetterCondition(const Type& variable) {
+		return false;
+	}
+	
 	/** VARIABLES **/
 	
 	// A setter function for the read only variable
 	typedef bool (* setFunction)(const Type& variable);
-	setFunction setterCondition = defaultSetterCondition;
-	
+	setFunction setterCondition = ReadOnly::defaultSetterCondition;
+
 	bool hasASetter = false;
 	
 	Type value;
@@ -36,18 +38,20 @@ class ReadOnly {
 	// You may enable the default constructor if you want -> ReadOnly() { }
 	
 	ReadOnly(const Type& variable) {
-		this->value = variable;
+		this->value = variable; // Calls the operator=
 	}
 	
 	// Specify a settter function and a default value
-	template <typename Function>
-	ReadOnly(Function& setterCondition, const Type& variable) {
+	ReadOnly(setFunction setterCondition, const Type& variable) {
 		
 		hasASetter = true;
 		this->setterCondition = setterCondition;
 		
 		if (setterCondition(variable) == true) {
 			this->value = variable;
+		}
+		else {
+			cerr << "Error: default value doesn't match setter condition" << endl;
 		}
 	}
 	
@@ -110,6 +114,5 @@ public:
 	template_anyType friend bool operator> (const anyType& var, const ReadOnly<Type>& var2) { return var > var2.value;  }
 	template_anyType friend bool operator>=(const anyType& var, const ReadOnly<Type>& var2) { return var >= var2.value; }
 };
-
 
 #endif /* ReadOnly_hpp */
