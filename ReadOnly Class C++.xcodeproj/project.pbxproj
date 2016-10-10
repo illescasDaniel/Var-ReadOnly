@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		650F0FEE1DABD0550002D279 /* makefile in Sources */ = {isa = PBXBuildFile; fileRef = 650F0FED1DABD0550002D279 /* makefile */; };
 		65A9E1601DA654B90088241B /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65A9E15F1DA654B90088241B /* main.cpp */; };
 /* End PBXBuildFile section */
 
@@ -23,6 +24,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		650F0FED1DABD0550002D279 /* makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = makefile; sourceTree = "<group>"; };
 		65A9E15C1DA654B90088241B /* ReadOnly Class C++ */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "ReadOnly Class C++"; sourceTree = BUILT_PRODUCTS_DIR; };
 		65A9E15F1DA654B90088241B /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		65A9E1661DA654E10088241B /* ReadOnly.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ReadOnly.hpp; sourceTree = "<group>"; };
@@ -62,6 +64,7 @@
 		65A9E15E1DA654B90088241B /* ReadOnly Class C++ */ = {
 			isa = PBXGroup;
 			children = (
+				650F0FED1DABD0550002D279 /* makefile */,
 				65A9E1671DA671420088241B /* include */,
 				65A9E15F1DA654B90088241B /* main.cpp */,
 			);
@@ -134,6 +137,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				650F0FEE1DABD0550002D279 /* makefile in Sources */,
 				65A9E1601DA654B90088241B /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
