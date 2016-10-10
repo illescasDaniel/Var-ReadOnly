@@ -4,7 +4,7 @@
 #ifndef ReadOnly_hpp
 #define ReadOnly_hpp
 
-#include <ostream>
+#include <iostream>
 
 #define template_anyType template <typename anyType>
 
