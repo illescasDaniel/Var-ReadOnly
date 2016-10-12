@@ -16,13 +16,13 @@ class Human {
 public:
 	ReadOnly<int> age{Human::setAge, 0};
 	ReadOnly<string> name{Human::setName, ""};
-	ReadOnly<string> lastName{"12.1"};
+	ReadOnly<string> id{"123456"};
 	
 	Human() { }
 	Human(const int& age, const string& name) {
 		this->age = age;
 		this->name = name;
-		lastName.value = ""; // This is how you change ReadOnly values which doesn't have a setter
+		this->id.value = ""; // This is how you change ReadOnly values which doesn't have a setter
 	}
 	
 	/* In this case, this assignment and constructor wouldn't make sense (and it wouldn't work) on a read only variable without a setter
@@ -39,7 +39,7 @@ public:
 int main() {
 
 	Human daniel;
-	cout << daniel.age << ' ' << daniel.lastName << endl;
+	cout << daniel.age << ' ' << daniel.id << endl;
 	
 	daniel.age = 20;
 	
@@ -57,15 +57,16 @@ int main() {
 	daniel.name = "hahahahahahhahhahahahahahahah";
 	cout << daniel.name << endl;
 	
-	daniel.lastName = "hello";
-	cout << daniel.lastName << endl;		// string
-	cout << stoi(daniel.lastName) << endl;	// int
-	cout << stof(daniel.lastName) << endl;	// float
+	daniel.id = "hello"; // Can't assign value because "id" doesn't have a setter
+	
+	cout << daniel.id << endl;		  // string
+	cout << stoi(daniel.id) << endl;  // int
+	cout << stof(daniel.id) << endl;  // float
 
 	//
 	
 	Human sofia(20, "Sofía");
-	cout << sofia.name << ' ' << sofia.age << ' ' << daniel.lastName << endl;
+	cout << sofia.name << ' ' << sofia.age << ' ' << daniel.id << endl;
 	
     return 0;
 }
