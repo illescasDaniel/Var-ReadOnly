@@ -36,7 +36,7 @@ public:
 	*/
 };
 
-int main(int argc, const char * argv[]) {
+int main() {
 
 	Human daniel;
 	cout << daniel.age << ' ' << daniel.lastName << endl;

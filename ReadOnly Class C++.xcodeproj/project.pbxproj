@@ -29,6 +29,7 @@
 		65A9E1661DA654E10088241B /* ReadOnly.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ReadOnly.hpp; sourceTree = "<group>"; };
 		65A9E1691DA67A4C0088241B /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		65A9E16B1DA67A550088241B /* LICENCE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENCE; sourceTree = "<group>"; };
+		65B7E4B81DAE95E700289530 /* .travis.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .travis.yml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +50,7 @@
 				65A9E1691DA67A4C0088241B /* README.md */,
 				65A9E15E1DA654B90088241B /* ReadOnly Class C++ */,
 				65A9E15D1DA654B90088241B /* Products */,
+				65B7E4B81DAE95E700289530 /* .travis.yml */,
 			);
 			sourceTree = "<group>";
 		};

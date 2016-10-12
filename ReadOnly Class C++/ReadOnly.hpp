@@ -55,7 +55,6 @@ class ReadOnly {
 		}
 	}
 	
-	
 public:
 	
 	/// Cast ReadOnly variable to any type
