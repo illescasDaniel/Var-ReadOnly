@@ -1,4 +1,7 @@
 # ReadOnly
+
+[![Build Status](https://travis-ci.org/illescasDaniel/ReadOnly.svg?branch=master)](https://travis-ci.org/illescasDaniel/ReadOnly)  
+
 Manage read only members in C++ classes.
 
 How to make it work
