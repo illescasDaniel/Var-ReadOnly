@@ -1,6 +1,8 @@
 # ReadOnly
 
-[![Build Status](https://travis-ci.org/illescasDaniel/ReadOnly.svg?branch=master)](https://travis-ci.org/illescasDaniel/ReadOnly)  
+[![Build Status](https://travis-ci.org/illescasDaniel/ReadOnly.svg?branch=master)](https://travis-ci.org/illescasDaniel/ReadOnly)
+[![Version](https://img.shields.io/badge/version-v1.0-green.svg)](https://github.com/illescasDaniel/ReadOnly/releases/tag/v1.0)
+[![license](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000)](https://github.com/illescasDaniel/ReadOnly/blob/master/LICENCE)  
 
 Manage read only members in C++ classes.
 
