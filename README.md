@@ -19,7 +19,7 @@ class ReadOnly {
 };
 ```
 
-Syntax
+Basic syntax
 ------
 ```C++
 #include "ReadOnly.hpp"
@@ -32,7 +32,7 @@ class Foo {
 
 public:
 
-	// Initialize variable specifying a setter function and a default value
+	// Initialize variable specifying a setter function
 	ReadOnly<string> name {Foo::setName}; 
 
 	// This variable has a default value of 10, and can't be changed externally 
@@ -43,13 +43,13 @@ public:
 
 	// This will assign the new value only if the specific setter function returns true
 	Foo(const string& name) { 
-		this->name = newName; 
+		this->name = name; 
 	}
 };
 
 Foo object("John");
 
-cout << object.name << ' ' << object.number << endl; // Output -> John 0
+cout << object.name << ' ' << object.number << endl; // Output -> John 10
 
 object.name = "Daniel"; // OK  
 object.name = "aaaaaaaaaaaaaaaaaaaab" // ERROR
@@ -58,14 +58,14 @@ string objectName = object.name;
 string myName = "Daniel Illecas";  
 object.name = myName;  
 
-object.number = 10; // ERROR  
+object.number = 20; // ERROR, variable is read only and doesn't have a setter
 
 ```
 
 Motivation
 --------
 In OOP when you use classes you have attributes and methods. 
-Problem is that on some languages, as C++, if you want people to access your variables they
+The problem is that on some languages, as C++, if you want someone to access your variables, they
 have to use (most of the times) getters, so instead of something like: 
 
 ```C++
@@ -80,8 +80,8 @@ Human daniel;
 cout << daniel.getAge() << endl; 
 ```
 
-Instead of accessing the attribute of the object, its property, you need to call a function, which doesn't make sense in OOP.  
+Instead of accessing the attribute of the object, its property, you need to call a function, **which doesn't make sense in OOP**.  
 
-With the ReadOnly class you can declare a variable which value will only change (externally) if a setter function is specified.  
+With the ReadOnly class you can declare a variable which value will only change (externally) if a setter function is specified and if the value satisfy the setter.  
 
-**Note**: by default constructors are private so you can only declare variables inside a friend class.
+**Note**: by default constructors are private, hence you can only declare variables inside a friend class.

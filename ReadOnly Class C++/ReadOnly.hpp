@@ -52,7 +52,7 @@ class ReadOnly {
 			this->value = variable;
 		}
 		else {
-			cerr << "Warning: default value (" << variable << ") doesn't match setter condition" << endl;
+			cerr << "Warning: default value (" << variable << ") doesn't satisfy setter condition" << endl;
 		}
 	}
 	
@@ -89,7 +89,7 @@ public:
 			cerr << "Error: attempting to write on a read only variable which doesn't have a setter" << endl;
 		}
 		else {
-			cerr << "Error: new value (" << variable << ") doesn't match setter condition" << endl;
+			cerr << "Error: new value (" << variable << ") doesn't satisfy setter condition" << endl;
 		}
 		
 		return *this;
