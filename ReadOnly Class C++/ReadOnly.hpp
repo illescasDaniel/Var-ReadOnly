@@ -6,7 +6,13 @@
 
 #include <iostream>
 
-#define template_anyType template <typename anyType>
+// OPERATORS macros
+#define operator(...); template <typename anyType> auto operator __VA_ARGS__ (const anyType& var) const { return (value __VA_ARGS__ var); }
+#define friendOperator(...); template <typename anyType> friend auto operator __VA_ARGS__ (const anyType& var, const ReadOnly& var2) { return (var __VA_ARGS__ var2.value); }
+#define operators(...); operator(__VA_ARGS__) friendOperator(__VA_ARGS__)
+
+// String to other types macro
+#define func(...); friend auto __VA_ARGS__ (const ReadOnly& var) { return __VA_ARGS__ (var.value); }
 
 using namespace std;
 
@@ -27,10 +33,9 @@ class ReadOnly {
 	
 	// A setter function for the read only variable
 	typedef bool (* setFunction)(const Type& variable);
-	setFunction setterCondition = ReadOnly::defaultSetterCondition;
-
-	bool hasASetter = false;
 	
+	setFunction setterCondition = ReadOnly::defaultSetterCondition;
+	bool hasASetter = false;
 	Type value;
 	
 	/* CONSTRUCTORS */
@@ -38,7 +43,7 @@ class ReadOnly {
 	// You may enable the default constructor if you want -> ReadOnly() { }
 	
 	ReadOnly(const Type& variable) {
-		this->value = variable; // Calls the operator=
+		this->value = variable; // Call the operator=
 	}
 	
 	/// Specify a settter function and a default value
@@ -58,7 +63,7 @@ class ReadOnly {
 public:
 	
 	/// Cast ReadOnly variable to any type
-	template_anyType
+	template <typename anyType>
 	operator anyType() const {
 		return value;
 	}
@@ -69,16 +74,7 @@ public:
 	}
 	
 	// String to other type conversion
-	friend int stoi(const ReadOnly& readOnlyVar) { return stoi(readOnlyVar.value); }
-	friend long stol(const ReadOnly& readOnlyVar) { return stol(readOnlyVar.value); }
-	friend float stof(const ReadOnly& readOnlyVar) { return stof(readOnlyVar.value); }
-	friend double stod(const ReadOnly& readOnlyVar) { return stod(readOnlyVar.value); }
-	friend long long stoll(const ReadOnly& readOnlyVar) { return stoll(readOnlyVar.value); }
-	friend long double stold(const ReadOnly& readOnlyVar) { return stold(readOnlyVar.value); }
-	friend unsigned long stoul(const ReadOnly& readOnlyVar) { return stoul(readOnlyVar.value); }
-	friend unsigned long long stoull(const ReadOnly& readOnlyVar) { return stoull(readOnlyVar.value); }
-	
-	/* Operators overloading */
+	func(stoi) func(stol) func(stof) func(stod) func(stoll) func(stold) func(stoul) func(stoull)
 	
 	/// Assign new value if it matches the setter condition
 	ReadOnly & operator=(const Type& variable) {
@@ -96,32 +92,8 @@ public:
 		return *this;
 	}
 	
-	template_anyType anyType operator+(const anyType& var) const { return value + var; }
-	template_anyType anyType operator-(const anyType& var) const { return value - var; }
-	template_anyType anyType operator*(const anyType& var) const { return value * var; }
-	template_anyType anyType operator/(const anyType& var) const { return value / var; }
-	template_anyType anyType operator%(const anyType& var) const { return value % var; }
-	
-	template_anyType bool operator==(const anyType& var) const { return value == var; }
-	template_anyType bool operator!=(const anyType& var) const { return value != var; }
-	template_anyType bool operator< (const anyType& var) const { return value < var;  }
-	template_anyType bool operator<=(const anyType& var) const { return value <= var; }
-	template_anyType bool operator> (const anyType& var) const { return value > var;  }
-	template_anyType bool operator>=(const anyType& var) const { return value >= var; }
-	
-	// friend operators overloading
-	template_anyType friend anyType operator+(const anyType& var, const ReadOnly<Type>& var2) { return var + var2.value; }
-	template_anyType friend anyType operator-(const anyType& var, const ReadOnly<Type>& var2) { return var - var2.value; }
-	template_anyType friend anyType operator*(const anyType& var, const ReadOnly<Type>& var2) { return var * var2.value; }
-	template_anyType friend anyType operator/(const anyType& var, const ReadOnly<Type>& var2) { return var / var2.value; }
-	template_anyType friend anyType operator%(const anyType& var, const ReadOnly<Type>& var2) { return var % var2.value; }
-	
-	template_anyType friend bool operator==(const anyType& var, const ReadOnly<Type>& var2) { return var == var2.value; }
-	template_anyType friend bool operator!=(const anyType& var, const ReadOnly<Type>& var2) { return var != var2.value; }
-	template_anyType friend bool operator< (const anyType& var, const ReadOnly<Type>& var2) { return var < var2.value;  }
-	template_anyType friend bool operator<=(const anyType& var, const ReadOnly<Type>& var2) { return var <= var2.value; }
-	template_anyType friend bool operator> (const anyType& var, const ReadOnly<Type>& var2) { return var > var2.value;  }
-	template_anyType friend bool operator>=(const anyType& var, const ReadOnly<Type>& var2) { return var >= var2.value; }
+	// Operators overloading (included friend operators)
+	operators(+) operators(-) operators(*) operators(/) operators(==) operators(!=) operators(<) operators(<=) operators(>) operators(>=)
 };
 
 #endif /* ReadOnly_hpp */

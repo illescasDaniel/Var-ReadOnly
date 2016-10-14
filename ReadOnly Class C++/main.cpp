@@ -47,7 +47,7 @@ int main() {
 	
 	daniel.age = 5000;
 	
-	cout << daniel.age << endl;
+	cout << 7 + daniel.age * 6 << endl;
 	
 	//
 	
