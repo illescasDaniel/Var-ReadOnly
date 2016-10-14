@@ -33,15 +33,15 @@ class Foo {
 public:
 
 	// Initialize variable specifying a setter function and a default value
-	ReadOnly<string> name{Foo::setName, ""}; 
+	ReadOnly<string> name {Foo::setName}; 
 
-	// This variable has a default value of 0, and can't be changed externally 
-	// You could change its value internally accessing their value property (number.value) 
-	ReadOnly<int> number{0}; 
+	// This variable has a default value of 10, and can't be changed externally 
+	// You could change its value internally accessing its value property (number.value) 
+	ReadOnly<int> number = 10; 
 
 	Foo() {}
 
-	// This will assing the new value only if the specific setter function returns true
+	// This will assign the new value only if the specific setter function returns true
 	Foo(const string& name) { 
 		this->name = newName; 
 	}
