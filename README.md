@@ -28,7 +28,7 @@ class Foo {
 
 	static bool setName(const string& value) {
 		return (value.length() <= 20);
-	}
+}
 
 public:
 
@@ -49,7 +49,7 @@ public:
 
 Foo object("John");
 
-cout << object.name << ' ' << object.number << endl; // Output -> John 10
+cout << object.name << ' ' << object.number << endl; // Output: John 10
 
 object.name = "Daniel"; // OK  
 object.name = "aaaaaaaaaaaaaaaaaaaab" // ERROR
