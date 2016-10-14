@@ -28,7 +28,7 @@ class Foo {
 
 	static bool setName(const string& value) {
 		return (value.length() <= 20);
-}
+	}
 
 public:
 
