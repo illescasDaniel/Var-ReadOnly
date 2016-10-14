@@ -7,39 +7,35 @@ using namespace std;
 class Human {
 
 	static bool setAge(const int& value) {
-		return (value >= 0 && value <= 150);
+		return (value > 0 && value <= 150);
 	}
 	static bool setName(const string& value) {
 		return (value.length() <= 20);
 	}
 	
 public:
-	ReadOnly<int> age{Human::setAge, 0};
-	ReadOnly<string> name{Human::setName, ""};
-	ReadOnly<string> id{"123456"};
+	ReadOnly<int> age {Human::setAge, 1};	// Setter & Default value
+	ReadOnly<string> name {Human::setName}; // Setter
+	ReadOnly<string> id = "123456";			// Initialize value, alternative: id {"123456"}
 	
-	Human() { }
+	ReadOnly<string> test;
+	
+	// Only way to change value of variables which doesn't have a setter
+	Human() {
+		test.value = "bla";
+	}
 	Human(const int& age, const string& name) {
 		this->age = age;
 		this->name = name;
-		this->id.value = ""; // This is how you change ReadOnly values which doesn't have a setter
 	}
-	
-	/* In this case, this assignment and constructor wouldn't make sense (and it wouldn't work) on a read only variable without a setter
-	Human(const string& lastName) {
-	 
-		this->lastName = lastName;
-		
-		// But this always works without restriction
-		// this->lastName.value = "";
-	 }
-	*/
 };
 
 int main() {
-
+	
 	Human daniel;
 	cout << daniel.age << ' ' << daniel.id << endl;
+	
+	cout << "a: " << daniel.test << endl;
 	
 	daniel.age = 20;
 	
