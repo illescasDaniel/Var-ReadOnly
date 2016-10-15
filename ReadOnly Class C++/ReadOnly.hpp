@@ -9,10 +9,10 @@
 using namespace std;
 
 // OPERATORS macros
-#define operator(_op_); template <typename anyType> auto operator _op_ (const anyType& var) const { return (value _op_ var); }
+#define operator_(_op_); template <typename anyType> auto operator _op_ (const anyType& var) const { return (value _op_ var); }
 #define friendOperator(_op_); template <typename anyType> friend auto operator _op_ (const anyType& var, const ReadOnly& var2) { return (var _op_ var2.value); }
 #define operatorAssignment(_op_, _op2_); template <typename anyType> auto operator _op_ (const anyType& var) { return (*this = *this _op2_ var); }
-#define operators(_op_); operator(_op_) friendOperator(_op_)
+#define operators(_op_); operator_(_op_) friendOperator(_op_)
 
 // String to other types macro
 #define func(stringTo); friend auto stringTo(const ReadOnly& var) { return stringTo(var.value); }
@@ -78,6 +78,7 @@ public:
 	
 	// String to other type conversion
 	func(stoi) func(stol) func(stof) func(stod) func(stoll) func(stold) func(stoul) func(stoull)
+	func(to_string) func(toupper) func(tolower) func(sort) func(begin) func(end)
 	
 	/// Assign new value if it matches the setter condition
 	template <typename anyType>

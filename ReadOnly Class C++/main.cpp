@@ -1,6 +1,8 @@
 #include <iostream>
 #include "ReadOnly.hpp"
 
+#include <vector>
+
 using namespace std;
 
 /// Class example
@@ -19,6 +21,10 @@ public:
 	ReadOnly<string> id = "123456";				// Initialize value, alternative: id {"123456"}
 	ReadOnly<float> height = 170;
 	ReadOnly<bool> isAlien;						// Default value: false, if it's int: 0, string: "" ...
+	
+	ReadOnly<char> chr = 'a';
+	
+	//ReadOnly<vector<int>> test;
 	
 	// Only way of changing value of variables which doesn't have a setter
 	Human() { }
@@ -84,6 +90,15 @@ int main() {
 	
 	daniel.age = 150;
 	cout << (daniel.age += 20) << endl;
+	
+	string test = to_string(daniel.age);
+	cout << test << endl;
+	cout << char(toupper(daniel.chr)) << endl;
+	
+//	for (auto value: daniel.aaa) {
+//		cout << value << ' ';
+//	}
+	cout << endl;
 	
     return 0;
 }
