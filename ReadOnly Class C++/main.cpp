@@ -25,7 +25,7 @@ public:
 	Human(const int& age, const string& name) {
 		this->age = age;
 		this->name = name;
-		// This would be the only way of changing the default value if the variable doesn't have a setter
+		// This would be the only way of changing the default value if the variable doesn't have a setter:
 		// height.value = 170;
 	}
 };
@@ -65,6 +65,25 @@ int main() {
 	
 	Human sofia(20, "Sofía");
 	cout << '\n' << sofia.name << ' ' << sofia.age << ' ' << daniel.id << endl;
+	
+	cout << daniel.age << ' ' << daniel.age % 15 << endl;
+	
+	//cout << daniel.age++ << ' '
+	daniel.age = 150;
+	cout << ++daniel.age << endl;
+	
+	
+	cout << daniel.age-- << ' ' << --daniel.age << endl;
+	
+	daniel.age = 20;
+	cout << (daniel.age *= 2) << ' ' << daniel.age + 10.2 << endl;
+	
+	cout << daniel.age << endl;
+	cout << daniel.age++ << endl;
+	cout << daniel.age << endl;
+	
+	daniel.age = 150;
+	cout << (daniel.age += 20) << endl;
 	
     return 0;
 }

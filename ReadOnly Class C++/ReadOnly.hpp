@@ -11,6 +11,7 @@ using namespace std;
 // OPERATORS macros
 #define operator(_op_); template <typename anyType> auto operator _op_ (const anyType& var) const { return (value _op_ var); }
 #define friendOperator(_op_); template <typename anyType> friend auto operator _op_ (const anyType& var, const ReadOnly& var2) { return (var _op_ var2.value); }
+#define operatorAssignment(_op_, _op2_); template <typename anyType> auto operator _op_ (const anyType& var) { return (*this = *this _op2_ var); }
 #define operators(_op_); operator(_op_) friendOperator(_op_)
 
 // String to other types macro
@@ -96,7 +97,15 @@ public:
 	}
 	
 	// Operators overloading (included friend operators)
-	operators(+) operators(-) operators(*) operators(/) operators(==) operators(!=) operators(<) operators(<=) operators(>) operators(>=)
+	operators(+) operators(-) operators(*) operators(/) operators(%) operators(==) operators(!=) operators(<) operators(<=) operators(>) operators(>=)
+	operatorAssignment(+=, +) operatorAssignment(-=,-) operatorAssignment(*=,*) operatorAssignment(/=,/) operatorAssignment(%=,%)
+	
+	Type operator++() { return (*this = *this + 1); }
+	Type operator--() { return (*this = *this - 1); }
+	Type operator++(int foo) { return (this->operator++() - 1); }
+	Type operator--(int foo) { return (this->operator--() - 1); }
+	
+	// added operators: %, 
 };
 
 #endif /* ReadOnly_hpp */
