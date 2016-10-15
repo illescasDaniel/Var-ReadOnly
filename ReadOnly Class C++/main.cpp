@@ -21,16 +21,18 @@ public:
 	ReadOnly<string> id = "123456";				// Initialize value, alternative: id {"123456"}
 	ReadOnly<float> height = 170;
 	ReadOnly<bool> isAlien;						// Default value: false, if it's int: 0, string: "" ...
-	
 	ReadOnly<char> chr = 'a';
-	
-	//ReadOnly<vector<int>> test;
+	ReadOnly<vector<int>> numbers;				// Vectors are working too, more or less...
 	
 	// Only way of changing value of variables which doesn't have a setter
-	Human() { }
+	Human() {
+		numbers.value = {1,2,3};
+	}
 	Human(const int& age, const string& name) {
 		this->age = age;
 		this->name = name;
+		
+		numbers.value = {1,2,3,4};
 		// This would be the only way of changing the default value if the variable doesn't have a setter:
 		// height.value = 170;
 	}
@@ -74,7 +76,6 @@ int main() {
 	
 	cout << daniel.age << ' ' << daniel.age % 15 << endl;
 	
-	//cout << daniel.age++ << ' '
 	daniel.age = 150;
 	cout << ++daniel.age << endl;
 	
@@ -95,10 +96,7 @@ int main() {
 	cout << test << endl;
 	cout << char(toupper(daniel.chr)) << endl;
 	
-//	for (auto value: daniel.aaa) {
-//		cout << value << ' ';
-//	}
 	cout << endl;
-	
+	cout << daniel.numbers[0] << ' ' << daniel.numbers[1] << endl;
     return 0;
 }

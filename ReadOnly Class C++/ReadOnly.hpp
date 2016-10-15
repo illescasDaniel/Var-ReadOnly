@@ -76,9 +76,9 @@ public:
 		return os << readOnlyVar.value;
 	}
 	
-	// String to other type conversion
+	// String related functions
 	func(stoi) func(stol) func(stof) func(stod) func(stoll) func(stold) func(stoul) func(stoull)
-	func(to_string) func(toupper) func(tolower) func(sort) func(begin) func(end)
+	func(to_string) func(toupper) func(tolower)
 	
 	/// Assign new value if it matches the setter condition
 	template <typename anyType>
@@ -105,8 +105,7 @@ public:
 	Type operator--() { return (*this = *this - 1); }
 	Type operator++(int foo) { return (this->operator++() - 1); }
 	Type operator--(int foo) { return (this->operator--() - 1); }
-	
-	// added operators: %, 
+	auto operator[](const int& index) { return value[index]; }
 };
 
 #endif /* ReadOnly_hpp */
