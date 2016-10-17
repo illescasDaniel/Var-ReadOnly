@@ -93,7 +93,7 @@ public:
 	Type operator--() { return (*this = *this - 1); }
 	Type operator++(int foo) { return (this->operator++() + 1); }
 	Type operator--(int foo) { return (this->operator--() + 1); }
-	auto operator[](const int& index) { return value[index]; }
+	auto operator[](const int& index) { return value[index]; } // For vectors
 };
 
 #endif /* ReadOnly_hpp */
