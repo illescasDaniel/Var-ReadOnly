@@ -6,16 +6,18 @@ using namespace std;
 
 /// Class example
 class Human {
-
-	static bool setAge(const uint32_t& value) {
-		return (value > 0 && value <= 150);
+	
+	static void setName(string& name, const string& newName) {
+		if (newName.length() <= 20) (name = newName);
+		else display_defaultError(newName);
 	}
-	static bool setName(const string& value) {
-		return (value.length() <= 20);
+	static void setAge(int& age, const int& newAge) {
+		if (newAge > 0 && newAge <= 150) (age = newAge);
+		else display_defaultError(newAge);
 	}
 	
 public:
-	ReadOnly<uint32_t> age {Human::setAge, 1};	// Setter & Default value
+	ReadOnly<int> age {Human::setAge, 1};	// Setter & Default value
 	ReadOnly<string> name {Human::setName};		// Setter
 	ReadOnly<string> id = "123456";				// Initialize value, alternative: id {"123456"}
 	ReadOnly<float> height = 170;
@@ -26,7 +28,7 @@ public:
 	Human() {
 		numbers.value = {1,2,3};
 		isAlien.value = true;
-		// height = 9000; ERROR, value already defined in the attribute declaration
+		// height = 9000; ERROR, variable doesn't have a setter
 	}
 	Human(const int& age, const string& name) {
 		this->age = age;
@@ -34,14 +36,15 @@ public:
 		
 		numbers.value = {1,2,3,4};
 		
-		// If the variable doesn't have a setter you can set it's value to whatever you want
-		// height = 999999.7;
+		// If the variable doesn't have a setter you can set it's value to whatever you want if you use the "value" attribute
+		// height.value = 999999.7;
 	}
 };
 
 int main() {
 	
 	Human daniel;
+	
 	daniel.isAlien = false; // ERROR
 	cout << "Age: " << daniel.age << ' ' << ", ID: " << daniel.id << endl;
 	
@@ -64,7 +67,7 @@ int main() {
 	
 	cout << "\n(Trying to assign a too long value for the name)" << endl;
 	daniel.name = "hahahahahahhahhahahahahahahah";
-	cout << "\nName: " << daniel.name << endl;
+	cout << "Name: " << daniel.name << endl;
 	
 	cout << "\n(Trying to change value of an attribute that doesn't have a setter specified)" << endl;
 	daniel.id = "hello"; // Can't assign value because "id" doesn't have a setter
@@ -98,6 +101,6 @@ int main() {
 	cout << char(toupper(daniel.chr)) << endl;
 	
 	cout << daniel.numbers[0] << ' ' << daniel.numbers[1] << endl;
-	
+
     return 0;
 }
