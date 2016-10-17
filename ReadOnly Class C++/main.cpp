@@ -1,6 +1,5 @@
 #include <iostream>
 #include "ReadOnly.hpp"
-
 #include <vector>
 
 using namespace std;
@@ -24,23 +23,26 @@ public:
 	ReadOnly<char> chr = 'a';
 	ReadOnly<vector<int>> numbers;				// Vectors are working too, more or less...
 	
-	// Only way of changing value of variables which doesn't have a setter
 	Human() {
 		numbers.value = {1,2,3};
+		isAlien.value = true;
+		// height = 9000; ERROR, value already defined in the attribute declaration
 	}
 	Human(const int& age, const string& name) {
 		this->age = age;
 		this->name = name;
 		
 		numbers.value = {1,2,3,4};
-		// This would be the only way of changing the default value if the variable doesn't have a setter:
-		// height.value = 170;
+		
+		// If the variable doesn't have a setter you can set it's value to whatever you want
+		// height = 999999.7;
 	}
 };
 
 int main() {
 	
 	Human daniel;
+	daniel.isAlien = false; // ERROR
 	cout << "Age: " << daniel.age << ' ' << ", ID: " << daniel.id << endl;
 	
 	cout << "Height: " << daniel.height << endl;
@@ -79,7 +81,6 @@ int main() {
 	daniel.age = 150;
 	cout << ++daniel.age << endl;
 	
-	
 	cout << daniel.age-- << ' ' << --daniel.age << endl;
 	
 	daniel.age = 20;
@@ -96,7 +97,7 @@ int main() {
 	cout << test << endl;
 	cout << char(toupper(daniel.chr)) << endl;
 	
-	cout << endl;
 	cout << daniel.numbers[0] << ' ' << daniel.numbers[1] << endl;
+	
     return 0;
 }

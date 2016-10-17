@@ -8,14 +8,8 @@
 
 using namespace std;
 
-// OPERATORS macros
-#define operator_(_op_); template <typename anyType> auto operator _op_ (const anyType& var) const { return (value _op_ var); }
-#define friendOperator(_op_); template <typename anyType> friend auto operator _op_ (const anyType& var, const ReadOnly& var2) { return (var _op_ var2.value); }
+// OPERATORS macro
 #define operatorAssignment(_op_, _op2_); template <typename anyType> auto operator _op_ (const anyType& var) { return (*this = *this _op2_ var); }
-#define operators(_op_); operator_(_op_) friendOperator(_op_)
-
-// String to other types macro
-#define func(stringTo); friend auto stringTo(const ReadOnly& var) { return stringTo(var.value); }
 
 /// Class to make read only variables with an optional setter to change their values
 template <typename Type>
@@ -40,7 +34,7 @@ class ReadOnly {
 	
 	template <typename anyType>
 	ReadOnly(const anyType& variable) {
-		this->value = variable; // Call the operator=
+		this->value = variable;
 	}
 	
 	/// Specify a settter function and a default value
@@ -53,7 +47,7 @@ class ReadOnly {
 			this->value = variable;
 		}
 		else {
-			cerr << "Warning: default value (" << variable << ") doesn't satisfy setter condition" << endl;
+			cerr << "Error: default value (" << variable << ") doesn't satisfy setter condition" << endl;
 		}
 	}
 	
@@ -65,9 +59,8 @@ class ReadOnly {
 	
 public:
 	
-	/// Cast ReadOnly variable to any type
-	template <typename anyType>
-	operator anyType() const {
+	/// Cast ReadOnly variable
+	operator Type() const {
 		return value;
 	}
 	
@@ -75,10 +68,6 @@ public:
 	friend ostream & operator<<(ostream& os, const ReadOnly& readOnlyVar) {
 		return os << readOnlyVar.value;
 	}
-	
-	// String related functions
-	func(stoi) func(stol) func(stof) func(stod) func(stoll) func(stold) func(stoul) func(stoull)
-	func(to_string) func(toupper) func(tolower)
 	
 	/// Assign new value if it matches the setter condition
 	template <typename anyType>
@@ -88,7 +77,7 @@ public:
 			this->value = variable;
 		}
 		else if (!hasASetter) {
-			cerr << "Error: attempting to write on a read only variable which doesn't have a setter" << endl;
+			cerr << "Error: attempting to write on a read only variable that doesn't have a setter" << endl;
 		}
 		else {
 			cerr << "Error: new value (" << variable << ") doesn't satisfy setter condition" << endl;
@@ -97,14 +86,13 @@ public:
 		return *this;
 	}
 	
-	// Operators overloading (included friend operators)
-	operators(+) operators(-) operators(*) operators(/) operators(%) operators(==) operators(!=) operators(<) operators(<=) operators(>) operators(>=)
+	// Operators overloading
 	operatorAssignment(+=, +) operatorAssignment(-=,-) operatorAssignment(*=,*) operatorAssignment(/=,/) operatorAssignment(%=,%)
 	
 	Type operator++() { return (*this = *this + 1); }
 	Type operator--() { return (*this = *this - 1); }
-	Type operator++(int foo) { return (this->operator++() - 1); }
-	Type operator--(int foo) { return (this->operator--() - 1); }
+	Type operator++(int foo) { return (this->operator++() + 1); }
+	Type operator--(int foo) { return (this->operator--() + 1); }
 	auto operator[](const int& index) { return value[index]; }
 };
 

@@ -1,7 +1,7 @@
 # ReadOnly
 
 [![Build Status](https://travis-ci.org/illescasDaniel/ReadOnly.svg?branch=master)](https://travis-ci.org/illescasDaniel/ReadOnly)
-[![Version](https://img.shields.io/badge/release-v1.3.2-green.svg)](https://github.com/illescasDaniel/ReadOnly/releases)
+[![Version](https://img.shields.io/badge/release-v1.4-green.svg)](https://github.com/illescasDaniel/ReadOnly/releases)
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000)](https://github.com/illescasDaniel/ReadOnly/blob/master/LICENCE)  
 
 Manage read only members in C++ classes.
@@ -36,7 +36,7 @@ public:
 	ReadOnly<string> name {Foo::setName}; 
 
 	// This variable has a default value of 10, and can't be changed externally 
-	// You could change its value internally accessing its value property (number.value) 
+	// You could change its value internally accessing its value property (number.value)
 	ReadOnly<int> number = 10; 
 
 	Foo() {}
