@@ -1,8 +1,13 @@
 #include <iostream>
 #include "ReadOnly.hpp"
 #include <vector>
+#include <stdexcept>
 
 using namespace std;
+
+// Macros examples to manage errors
+#define display_defaultError(_variable_) cerr << "Error: value (" << _variable_ << ") of variable (" #_variable_ ") doesn't satisfy setter condition" << endl
+#define throw_defaultError(_variable_) throw logic_error("Error: value (" + to_string(_variable_) + ") of variable (" #_variable_ ") doesn't satisfy setter condition")
 
 /// Class example
 class Human {
@@ -13,11 +18,11 @@ class Human {
 	}
 	static void setAge(int& age, const int& newAge) {
 		if (newAge > 0 && newAge <= 150) (age = newAge);
-		else display_defaultError(newAge);
+		else display_defaultError(newAge); // or: throw_defaultError(newAge)
 	}
 	
 public:
-	ReadOnly<int> age {Human::setAge, 1};	// Setter & Default value
+	ReadOnly<int> age {Human::setAge, 1};		// Setter & Default value
 	ReadOnly<string> name {Human::setName};		// Setter
 	ReadOnly<string> id = "123456";				// Initialize value, alternative: id {"123456"}
 	ReadOnly<float> height = 170;
@@ -42,6 +47,8 @@ public:
 };
 
 int main() {
+	
+	perror("error!!");
 	
 	Human daniel;
 	
