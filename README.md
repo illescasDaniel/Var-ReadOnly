@@ -15,10 +15,10 @@ Add your friend class in the ReadOnly/ ReadOnly_alt class.
 ```C++
 class ReadOnly {
 
-/** Friend classes **/
-friend class Foo;
+	/** Friend classes **/
+	friend class Foo;
 
-/* ... */
+	/* ... */
 };
 ```
 
@@ -29,26 +29,26 @@ Basic syntax (ReadOnly)
 
 class Foo {
 
-static void setName(string& name, const string& newName) {
-if (newName.length() <= 20) (name = newName);
-else cerr << "Error: new value doesn't satisfy setter condition" << endl;
-}
+	static void setName(string& name, const string& newName) {
+		if (newName.length() <= 20) (name = newName);
+		else cerr << "Error: new value doesn't satisfy setter condition" << endl;
+	}
 
 public:
 
-// Initialize variable specifying a setter function
-ReadOnly<string> name {Foo::setName}; 
+	// Initialize variable specifying a setter function
+	ReadOnly<string> name {Foo::setName}; 
 
-// This variable has a default value of 10, and can't be changed externally 
-// You could change its value internally accessing its value property (number.value)
-ReadOnly<int> number = 10; 
+	// This variable has a default value of 10, and can't be changed externally 
+	// You could change its value internally accessing its value property (number.value)
+	ReadOnly<int> number = 10; 
 
-Foo() {}
+	Foo() {}
 
-// This will assign the new value only if is matches the setter condition
-Foo(const string& name) { 
-this->name = name; 
-}
+	// This will assign the new value only if is matches the setter condition
+	Foo(const string& name) { 
+		this->name = name; 
+	}
 };
 
 Foo object("John");
