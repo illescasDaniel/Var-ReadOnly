@@ -29,18 +29,26 @@ public:
 	ReadOnly<float> height = 170;
 	ReadOnly<bool> isAlien;						// Default value: false, if it's int: 0, string: "" ...
 	ReadOnly<char> chr = 'a';
-	ReadOnly<vector<int>> numbers;				// Vectors are working too, more or less...
 	
-	ReadOnly_alt<int> age2 = 1; // Alternative read only attribute (don't have setter)
+	// Arrays
+	ReadOnly<vector<int>> numbers;				// size: 32 bytes
+	ReadOnly<unique_ptr<int[]>> numbers2;		// size: 16 bytes
+	ReadOnly_alt<unique_ptr<int[]>> numbers3;	// size: 8 bytes, same as "int *"
+	
+	ReadOnly_alt<int> age2 = 1;					// Alternative read only attribute (don't have setter)
 	
 	Human() {
+
 		numbers.value = {1,2,3};
+		numbers2.value = unique_ptr<int[]>(new int[3] {1,2,3});
+		numbers3.value = unique_ptr<int[]>(new int[3] {1,2,3});
+		
 		isAlien.value = true;
 		// height = 9000; ERROR, variable doesn't have a setter
 	}
 	Human(const int& age, const string& name) {
 		this->age = age;
-		this->age2 = age; // No need to use the "value" attribute
+		this->age2 = age; // No need to use the "value" attribute in most cases
 		this->name = name;
 		
 		numbers.value = {1,2,3,4};
@@ -118,6 +126,10 @@ int main() {
 	
 	cout << "Size of types\t->\t" << "int: " << sizeof(int) << "\tReadOnly_alt<int>: " << sizeof(ReadOnly_alt<int>)
 	<< "\tReadOnly<int>: " << sizeof(ReadOnly<int>) << '\n' << endl;
+	
+	cout << "Size of array types: \n" << "ReadOnly<vector<int>>: " << sizeof(daniel.numbers) << '\n'
+	<< "ReadOnly<unique_ptr<int[]>: " << sizeof(daniel.numbers2) << '\n'
+	<< "ReadOnly_alt<unique_ptr<int[]>: " << sizeof(daniel.numbers3) << endl;
 
     return 0;
 }

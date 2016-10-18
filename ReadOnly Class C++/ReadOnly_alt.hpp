@@ -7,7 +7,7 @@
 #include <ostream>
 
 /**
- Alternative ReadOnly class which is lighter and more efficiente in memory (and performance?)
+ Alternative ReadOnly class which is lighter and more efficiente in memory (and better in performance?)
  
  If you only use this class you can change it's name to just "ReadOnly"
  */
@@ -16,7 +16,7 @@ class ReadOnly_alt {
 
 	Type value {};
 	
-	// Friend classes (add your classes here!)
+	// Friend classes (important)
 	friend class Human;
 	
 	inline ReadOnly_alt() {}
@@ -31,9 +31,9 @@ class ReadOnly_alt {
 	}
 	
 public:
-	inline operator Type() {
+	inline operator Type() const {
 		return value;
 	}
 };
 
-#endif /* ReadOnly_hpp */
+#endif /* ReadOnly_alt_hpp */

@@ -63,13 +63,13 @@ public:
 	}
 	
 	// Operators overloading
-	operatorAssignment(+=, +) operatorAssignment(-=,-) operatorAssignment(*=,*) operatorAssignment(/=,/) operatorAssignment(%=,%)
+	operatorAssignment(+=,+) operatorAssignment(-=,-) operatorAssignment(*=,*) operatorAssignment(/=,/) operatorAssignment(%=,%)
 	
 	inline Type operator++() { return (*this = *this + 1); }
 	inline Type operator--() { return (*this = *this - 1); }
 	inline Type operator++(int) { return (this->operator++() - 1); }
 	inline Type operator--(int) { return (this->operator--() + 1); }
-	inline auto operator[](const int& index) { return value[index]; } // For vectors
+	inline auto operator[](const int& index) const { return value[index]; } // For vectors
 };
 
 #endif /* ReadOnly_hpp */
