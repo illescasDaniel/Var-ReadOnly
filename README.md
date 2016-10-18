@@ -6,12 +6,12 @@
 
 Manage read only members in C++ classes.
 
-There are two available classes: `ReadOnly` y and `ReadOnly_alt`.
+There are two available classes: `ReadOnly` y and `ReadOnly_alt`.  
 The first one includes methods to set values using a setter (optional), the other doesn't but it's' more efficient (*).
 
 How to make it work
 --------
-Add your friend class in the ReadOnly/ReadOnly_alt class.  
+Add your friend class in the ReadOnly/ ReadOnly_alt class.  
 ```C++
 class ReadOnly {
 
@@ -118,4 +118,4 @@ With the ReadOnly class you can declare a variable which value will only change 
 
 **Note**: by default constructors are private, hence you can only declare variables inside a friend class.  
 
-(*) Type Sizes -> `int`: 4 bytes, `ReadOnly_alt<int>`: 4, `ReadOnly<int>`: 16
+(*) **Type Sizes** -> `int`: 4 bytes, `ReadOnly_alt<int>`: 4, `ReadOnly<int>`: 16
