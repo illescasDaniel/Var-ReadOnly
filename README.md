@@ -73,16 +73,17 @@ Basic sytax (ReadOnly_alt)
 
 struct Human {
 
-// Read only attribute (doesn't have a setter function)
-ReadOnly_alt<int> age;
-ReadOnly_alt<string> name; 
+	// Read only attribute (doesn't have a setter function)
+	ReadOnly_alt<int> age;
+	ReadOnly_alt<string> name; 
 
-// This will assign the new value only if is matches the setter condition
-Foo(const int& const string& name) { 
-this->name = name; 
-}
+	// This will assign the new value only if is matches the setter condition
+	Foo(const int& age string& name) { 
+		this->age = age;
+		this->name = name; 
+	}
 
-// You could make an external setter function here, but you might want to use ReadOnly instead...
+	// You could make an external setter function here, but you might want to use ReadOnly instead...
 };
 
 Human daniel(20, "Daniel");
