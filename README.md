@@ -15,10 +15,10 @@ Add your friend class in the ReadOnly/ ReadOnly_alt class.
 ```C++
 class ReadOnly {
 
-	/** Friend classes **/
-	friend class Foo;
+/** Friend classes **/
+friend class Foo;
 
-	/* ... */
+/* ... */
 };
 ```
 
@@ -29,26 +29,26 @@ Basic syntax (ReadOnly)
 
 class Foo {
 
-	static void setName(string& name, const string& newName) {
-		if (newName.length() <= 20) (name = newName);
-		else cerr << "Error: new value doesn't satisfy setter condition" << endl;
-	}
+static void setName(string& name, const string& newName) {
+if (newName.length() <= 20) (name = newName);
+else cerr << "Error: new value doesn't satisfy setter condition" << endl;
+}
 
 public:
 
-	// Initialize variable specifying a setter function
-	ReadOnly<string> name {Foo::setName}; 
+// Initialize variable specifying a setter function
+ReadOnly<string> name {Foo::setName}; 
 
-	// This variable has a default value of 10, and can't be changed externally 
-	// You could change its value internally accessing its value property (number.value)
-	ReadOnly<int> number = 10; 
+// This variable has a default value of 10, and can't be changed externally 
+// You could change its value internally accessing its value property (number.value)
+ReadOnly<int> number = 10; 
 
-	Foo() {}
+Foo() {}
 
-	// This will assign the new value only if is matches the setter condition
-	Foo(const string& name) { 
-		this->name = name; 
-	}
+// This will assign the new value only if is matches the setter condition
+Foo(const string& name) { 
+this->name = name; 
+}
 };
 
 Foo object("John");
@@ -73,16 +73,16 @@ Basic sytax (ReadOnly_alt)
 
 struct Human {
 
-	// Read only attribute (doesn't have a setter function)
-	ReadOnly_alt<int> age;
-	ReadOnly_alt<string> name; 
+// Read only attribute (doesn't have a setter function)
+ReadOnly_alt<int> age;
+ReadOnly_alt<string> name; 
 
-	// This will assign the new value only if is matches the setter condition
-	Foo(const int& const string& name) { 
-		this->name = name; 
-	}
+// This will assign the new value only if is matches the setter condition
+Foo(const int& const string& name) { 
+this->name = name; 
+}
 
-	// You could make an external setter function here, but you might want to use ReadOnly instead...
+// You could make an external setter function here, but you might want to use ReadOnly instead...
 };
 
 Human daniel(20, "Daniel");
@@ -118,4 +118,5 @@ With the ReadOnly class you can declare a variable which value will only change 
 
 **Note**: by default constructors are private, hence you can only declare variables inside a friend class.  
 
-(*) **Type Sizes** -> `int`: 4 bytes, `ReadOnly_alt<int>`: 4, `ReadOnly<int>`: 16
+(*)
+**Type Sizes** -> `int`: 4 bytes, `ReadOnly_alt<int>`: 4, `ReadOnly<int>`: 16
