@@ -1,7 +1,7 @@
 # ReadOnly
 
 [![Build Status](https://travis-ci.org/illescasDaniel/ReadOnly.svg?branch=master)](https://travis-ci.org/illescasDaniel/ReadOnly)
-[![Version](https://img.shields.io/badge/version-v1.4.1--beta2-green.svg)](https://github.com/illescasDaniel/ReadOnly/releases)
+[![Version](https://img.shields.io/badge/release-v1.4-green.svg)](https://github.com/illescasDaniel/ReadOnly/releases)
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000)](https://github.com/illescasDaniel/ReadOnly/blob/master/LICENCE)  
 
 Manage read only members in C++ classes.
@@ -26,8 +26,9 @@ Basic syntax
 
 class Foo {
 
-	static bool setName(const string& value) {
-		return (value.length() <= 20);
+	static void setName(string& name, const string& newName) {
+		if (newName.length() <= 20) (name = newName);
+		else cerr << "Error: new value doesn't satisfy setter condition" << endl;
 	}
 
 public:
@@ -41,7 +42,7 @@ public:
 
 	Foo() {}
 
-	// This will assign the new value only if the specific setter function returns true
+	// This will assign the new value only if is matches the setter condition
 	Foo(const string& name) { 
 		this->name = name; 
 	}

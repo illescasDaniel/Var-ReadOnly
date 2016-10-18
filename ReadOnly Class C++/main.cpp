@@ -48,8 +48,6 @@ public:
 
 int main() {
 	
-	perror("error!!");
-	
 	Human daniel;
 	
 	daniel.isAlien = false; // ERROR
@@ -58,7 +56,7 @@ int main() {
 	cout << "Height: " << daniel.height << endl;
 	cout << boolalpha << "Is alien?: " << daniel.isAlien << endl;
 	
-	uint32_t age = daniel.age + 10;
+	int age = daniel.age + 10;
 	cout << "Age var: " << age << endl;
 	
 	daniel.age = 20;
@@ -90,10 +88,11 @@ int main() {
 	
 	daniel.age = 150;
 	cout << ++daniel.age << endl;
-	
+
+	daniel.age = 20;
+	cout << daniel.age++ << ' ' << ++daniel.age << endl;
 	cout << daniel.age-- << ' ' << --daniel.age << endl;
 	
-	daniel.age = 20;
 	cout << (daniel.age *= 2) << ' ' << daniel.age + 10.2 << endl;
 	
 	cout << daniel.age << endl;

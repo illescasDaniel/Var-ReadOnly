@@ -51,7 +51,7 @@ public:
 	}
 	
 	/// Display ReadOnly variables with cout (ostream)
-		friend std::ostream & operator<<(std::ostream& os, const ReadOnly& readOnlyVar) {
+	friend std::ostream & operator<<(std::ostream& os, const ReadOnly& readOnlyVar) {
 		return os << readOnlyVar.value;
 	}
 	
@@ -67,8 +67,8 @@ public:
 	
 	Type operator++() { return (*this = *this + 1); }
 	Type operator--() { return (*this = *this - 1); }
-	Type operator++(int foo) { return (this->operator++() + 1); }
-	Type operator--(int foo) { return (this->operator--() + 1); }
+	Type operator++(int) { return (this->operator++() - 1); }
+	Type operator--(int) { return (this->operator--() + 1); }
 	auto operator[](const int& index) { return value[index]; } // For vectors
 };
 
