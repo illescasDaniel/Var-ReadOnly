@@ -1,5 +1,6 @@
 #include <iostream>
 #include "ReadOnly.hpp"
+#include "ReadOnly_alt.hpp"
 #include <vector>
 #include <stdexcept>
 
@@ -30,6 +31,8 @@ public:
 	ReadOnly<char> chr = 'a';
 	ReadOnly<vector<int>> numbers;				// Vectors are working too, more or less...
 	
+	ReadOnly_alt<int> age2 = 1; // Alternative read only attribute (don't have setter)
+	
 	Human() {
 		numbers.value = {1,2,3};
 		isAlien.value = true;
@@ -37,6 +40,7 @@ public:
 	}
 	Human(const int& age, const string& name) {
 		this->age = age;
+		this->age2 = age; // No need to use the "value" attribute
 		this->name = name;
 		
 		numbers.value = {1,2,3,4};
@@ -50,8 +54,12 @@ int main() {
 	
 	Human daniel;
 	
+	cout << "Trying to assign value to read only attribute \"isAlien\" that doesn't have a setter" << endl;
 	daniel.isAlien = false; // ERROR
-	cout << "Age: " << daniel.age << ' ' << ", ID: " << daniel.id << endl;
+	
+	cout << endl;
+	
+	cout << "Age: " << daniel.age << ", " << daniel.age2 << ' ' << ", ID: " << daniel.id << endl;
 	
 	cout << "Height: " << daniel.height << endl;
 	cout << boolalpha << "Is alien?: " << daniel.isAlien << endl;
@@ -82,7 +90,7 @@ int main() {
 	cout << "string to float: " << stof(daniel.id) << endl; // float
 	
 	Human sofia(20, "Sofía");
-	cout << '\n' << sofia.name << ' ' << sofia.age << ' ' << daniel.id << endl;
+	cout << '\n' << sofia.name << ' ' << sofia.age << ' ' << sofia.age2 << ' ' << daniel.id << endl;
 	
 	cout << daniel.age << ' ' << daniel.age % 15 << endl;
 	
@@ -107,6 +115,9 @@ int main() {
 	cout << char(toupper(daniel.chr)) << endl;
 	
 	cout << daniel.numbers[0] << ' ' << daniel.numbers[1] << endl;
+	
+	cout << "Size of types\t->\t" << "int: " << sizeof(int) << "\tReadOnly_alt<int>: " << sizeof(ReadOnly_alt<int>)
+	<< "\tReadOnly<int>: " << sizeof(ReadOnly<int>) << '\n' << endl;
 
     return 0;
 }
