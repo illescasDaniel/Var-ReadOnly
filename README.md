@@ -118,5 +118,4 @@ With the ReadOnly class you can declare a variable which value will only change 
 
 **Note**: by default constructors are private, hence you can only declare variables inside a friend class.  
 
-(*)
-**Type Sizes** -> `int`: 4 bytes, `ReadOnly_alt<int>`: 4, `ReadOnly<int>`: 16
+(*) __Type Sizes__ -> `int`: 4 bytes, `ReadOnly_alt<int>`: 4, `ReadOnly<int>`: 16
