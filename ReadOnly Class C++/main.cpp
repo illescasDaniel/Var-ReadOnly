@@ -3,6 +3,7 @@
 #include "ReadOnly_alt.hpp"
 #include <vector>
 #include <stdexcept>
+#include <memory>
 
 using namespace std;
 
@@ -31,9 +32,9 @@ public:
 	ReadOnly<char> chr = 'a';
 	
 	// Arrays
-	ReadOnly<vector<int>> numbers;				// size: 32 bytes
-	ReadOnly<unique_ptr<int[]>> numbers2;		// size: 16 bytes
-	ReadOnly_alt<unique_ptr<int[]>> numbers3;	// size: 8 bytes, same as "int *"
+	ReadOnly<vector<int>> numbers;				// std::vector
+	ReadOnly<unique_ptr<int[]>> numbers2;		// Smart pointer (similar to "int *")
+	ReadOnly_alt<unique_ptr<int[]>> numbers3;
 	
 	ReadOnly_alt<int> age2 = 1;					// Alternative read only attribute (don't have setter)
 	
