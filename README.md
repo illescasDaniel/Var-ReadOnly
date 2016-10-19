@@ -15,7 +15,7 @@ Add your friend class in the ReadOnly/ ReadOnly_alt class.
 ```C++
 class ReadOnly {
 
-	/** Friend classes **/
+	/* Friend classes */
 	friend class Foo;
 
 	/* ... */
@@ -51,18 +51,22 @@ public:
 	}
 };
 
-Foo object("John");
+int main() {
 
-cout << object.name << ' ' << object.number << endl; // Output: John 10
+	Foo object("John");
 
-object.name = "Daniel"; // OK  
-object.name = "aaaaaaaaaaaaaaaaaaaab" // ERROR
+	cout << object.name << ' ' << object.number << endl; // Output: John 10
 
-string objectName = object.name;  
-string myName = "Daniel Illecas";  
-object.name = myName;  
+	object.name = "Daniel"; // OK  
+	object.name = "aaaaaaaaaaaaaaaaaaaab"; // ERROR
 
-object.number = 20; // ERROR, variable is read only and doesn't have a setter
+	string objectName = object.name;  
+	string myName = "Daniel Illecas";  
+	object.name = myName;  
+
+	object.number = 20; // ERROR, variable is read only and doesn't have a setter
+}
+
 
 ```
 
@@ -85,12 +89,16 @@ struct Human {
 	// You could make an external setter function here, but you might want to use ReadOnly instead...
 };
 
-Human daniel(20, "Daniel");
+int main() {
 
-cout << daniel.name << ' ' << daniel.age << endl; // OK
+	Human daniel(20, "Daniel");
 
-daniel.name = "John"; // ERROR!
-daniel.age = 21;	  // ERROR!
+	cout << daniel.name << ' ' << daniel.age << endl; // OK
+
+	daniel.name = "John"; // ERROR!
+	daniel.age = 21;	  // ERROR!
+}
+
 
 ```
 

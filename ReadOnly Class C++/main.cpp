@@ -60,7 +60,7 @@ public:
 };
 
 int main() {
-	
+
 	Human daniel;
 	
 	cout << "Trying to assign value to read only attribute \"isAlien\" that doesn't have a setter" << endl;
@@ -131,6 +131,5 @@ int main() {
 	cout << "Size of array types: \n" << "ReadOnly<vector<int>>: " << sizeof(daniel.numbers) << '\n'
 	<< "ReadOnly<unique_ptr<int[]>: " << sizeof(daniel.numbers2) << '\n'
 	<< "ReadOnly_alt<unique_ptr<int[]>: " << sizeof(daniel.numbers3) << endl;
-
-    return 0;
+	
 }
