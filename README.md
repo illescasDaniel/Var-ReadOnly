@@ -7,7 +7,7 @@
 Manage read only members in C++ classes.
 
 There are two available classes: `ReadOnly` y and `ReadOnly_alt`.  
-The first one includes methods to set values using a setter (optional), the other doesn't but it's' more efficient (*).
+The first one includes methods to set values using a setter (optional), the other doesn't but it's lighter and should be more efficient.
 
 How to make it work
 --------
@@ -117,5 +117,3 @@ Instead of accessing the attribute of the object, its property, you need to call
 With the ReadOnly class you can declare a variable which value will only change (externally) if a setter function is specified and if the value satisfy the setter.  
 
 **Note**: by default constructors are private, hence you can only declare variables inside a friend class.  
-
-(*) __Type Sizes__ -> `int`: 4 bytes, `ReadOnly_alt<int>`: 4, `ReadOnly<int>`: 16
