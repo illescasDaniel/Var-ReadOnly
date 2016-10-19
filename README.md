@@ -77,7 +77,7 @@ struct Human {
 	ReadOnly_alt<int> age;
 	ReadOnly_alt<string> name; 
 
-	Human(const int& age string& name) { 
+	Human(const int& age, const string& name) { 
 		this->age = age;
 		this->name = name; 
 	}
