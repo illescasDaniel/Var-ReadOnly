@@ -77,8 +77,7 @@ struct Human {
 	ReadOnly_alt<int> age;
 	ReadOnly_alt<string> name; 
 
-	// This will assign the new value only if is matches the setter condition
-	Foo(const int& age string& name) { 
+	Human(const int& age string& name) { 
 		this->age = age;
 		this->name = name; 
 	}
