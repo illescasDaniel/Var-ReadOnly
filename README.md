@@ -1,4 +1,4 @@
-# ReadOnly
+# Var-ReadOnly
 
 [![Build Status](https://travis-ci.org/illescasDaniel/ReadOnly.svg?branch=master)](https://travis-ci.org/illescasDaniel/ReadOnly)
 [![Version](https://img.shields.io/badge/release-v2.1-green.svg)](https://github.com/illescasDaniel/ReadOnly/releases)
@@ -18,7 +18,7 @@ template <typename Type, typename Friend = ReadOnlyDefaultFriend>
 class ReadOnly {
 
 	/* Friend classes */
-	friend class Human;
+	friend class Human; // HERE
 	friend Friend;
 
 	/* ... */
