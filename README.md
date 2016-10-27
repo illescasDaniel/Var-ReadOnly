@@ -77,12 +77,12 @@ int main() {
 
 	Car toyota("Toyota", "123456AB");
 	cout << toyota.brand << ' ' << toyota.plateNumber << endl;
-	// toyota.brand = "another"; // Compilation ERROR
+	toyota.brand = "another"; // Compilation ERROR
 
 	Human daniel("Daniel", 20);
 	cout << daniel.name << ' ' << daniel.age << endl;
 
-	danie.name = "John"; // ERROR
+	danie.name = "John"; // Compilation ERROR
 	daniel.age = 100; // OK
 	daniel.age = 1000; // ERROR
 	daniel.growUP(); // OK
@@ -99,7 +99,7 @@ The main goal with these classes is to provide a quicker and prettier way of wor
 This is how it looks now:
 
 ```C++
-Human daniel("Daniel", 20;  
+Human daniel("Daniel", 20);  
 cout << daniel.age << endl;  
 daniel.age = 140; // Calls the setter funtion
 
@@ -110,7 +110,7 @@ cout << daniel.name << endl; // OK
 This is how it looked before:
 
 ```C++
-Human daniel("Daniel", 20; 
+Human daniel("Daniel", 20); 
 cout << daniel.getAge() << endl; 
 cout << daniel.setAge(140) << endl;
 
@@ -118,4 +118,4 @@ cout << daniel.name << endl; // ERROR, name is private
 cout << daniel.getName() << endl;
 ``` 
 
-**Note**: by default constructors are private, hence you can only declare variables inside a friend class.  
+**Note**: by default constructors are private, hence you can only declare Var or ReadOnly objects inside a friend class.  
