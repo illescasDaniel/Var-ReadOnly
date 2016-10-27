@@ -19,4 +19,4 @@ notifications:
 
 before_install: sudo apt-get update -qq
 
-script: make --directory "ReadOnly Class C++"
+script: make --directory "Var & ReadOnly C++"
