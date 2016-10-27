@@ -4,7 +4,7 @@
 [![Version](https://img.shields.io/badge/release-v2.0-green.svg)](https://github.com/illescasDaniel/ReadOnly/releases)
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000)](https://github.com/illescasDaniel/ReadOnly/blob/master/LICENCE)  
 
-Manage read only members in C++ classes.
+Manage read only members and variables with setters in C++ classes.
 
 There are two available classes: `Var` y and `ReadOnly`.  
 The first one includes methods to set values using a setter, with the other you can declare read only attributes.
