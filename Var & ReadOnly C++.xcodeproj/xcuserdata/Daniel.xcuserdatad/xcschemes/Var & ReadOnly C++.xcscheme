@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "65A9E15B1DA654B90088241B"
-               BuildableName = "ReadOnly Class C++"
-               BlueprintName = "ReadOnly Class C++"
-               ReferencedContainer = "container:ReadOnly Class C++.xcodeproj">
+               BuildableName = "Var &amp; ReadOnly C++"
+               BlueprintName = "Var &amp; ReadOnly C++"
+               ReferencedContainer = "container:Var &amp; ReadOnly C++.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "65A9E15B1DA654B90088241B"
-            BuildableName = "ReadOnly Class C++"
-            BlueprintName = "ReadOnly Class C++"
-            ReferencedContainer = "container:ReadOnly Class C++.xcodeproj">
+            BuildableName = "Var &amp; ReadOnly C++"
+            BlueprintName = "Var &amp; ReadOnly C++"
+            ReferencedContainer = "container:Var &amp; ReadOnly C++.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -56,9 +56,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "65A9E15B1DA654B90088241B"
-            BuildableName = "ReadOnly Class C++"
-            BlueprintName = "ReadOnly Class C++"
-            ReferencedContainer = "container:ReadOnly Class C++.xcodeproj">
+            BuildableName = "Var &amp; ReadOnly C++"
+            BlueprintName = "Var &amp; ReadOnly C++"
+            ReferencedContainer = "container:Var &amp; ReadOnly C++.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -75,9 +75,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "65A9E15B1DA654B90088241B"
-            BuildableName = "ReadOnly Class C++"
-            BlueprintName = "ReadOnly Class C++"
-            ReferencedContainer = "container:ReadOnly Class C++.xcodeproj">
+            BuildableName = "Var &amp; ReadOnly C++"
+            BlueprintName = "Var &amp; ReadOnly C++"
+            ReferencedContainer = "container:Var &amp; ReadOnly C++.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
