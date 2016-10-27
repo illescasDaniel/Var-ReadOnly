@@ -5,7 +5,7 @@
 
 #include <iostream>
 
-// Operators assignment macro (MAKE PRIVATE!!)
+// Operators assignment macro
 #define operatorAssignment(_op_, _op2_); template <typename anyType> inline auto operator _op_ (const anyType& Var) { return (*this = *this _op2_ Var); }
 
 class VarDefaultFriend{};
