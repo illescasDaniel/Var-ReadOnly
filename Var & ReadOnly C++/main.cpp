@@ -59,7 +59,29 @@ public:
 	}
 };
 
+struct Car {
+	
+	ReadOnly<uint16_t,Car> wheels = 4;
+	ReadOnly<string,Car> plateNumber;
+	ReadOnly<string,Car> brand;
+	// ...
+	
+	Car(const string& plateNumber, const string& brand, const uint16_t& wheels) {
+		this->plateNumber = plateNumber;
+		this->brand = brand;
+		this->wheels = wheels;
+	}
+};
+
 int main() {
+	
+	
+	Car toyota("2020CE", "Toyota", 4);
+	
+	cout << toyota.wheels << endl;
+	//toyota.brand = "another"; // Compilation ERROR
+	
+	//
 
 	Human daniel;
 	

@@ -1,20 +1,22 @@
 // MIT License
 // Author: Daniel Illescas Romero (2016)
 
-#ifndef ReadOnly_hpp
-#define ReadOnly_hpp
+#pragma once
 
 #include <ostream>
+
+class ReadOnlyDefaultFriend{};
 
 /**
  Class to manage read only attributes
  */
-template <typename Type>
+template <typename Type, typename Friend = ReadOnlyDefaultFriend>
 class ReadOnly {
 
 	Type value {};
 	
 	// Friend classes (important)
+	friend Friend;
 	friend class Human;
 	
 	inline ReadOnly() {}
@@ -33,5 +35,3 @@ public:
 		return value;
 	}
 };
-
-#endif /* ReadOnly_hpp */

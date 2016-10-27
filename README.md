@@ -1,7 +1,7 @@
 # ReadOnly
 
 [![Build Status](https://travis-ci.org/illescasDaniel/ReadOnly.svg?branch=master)](https://travis-ci.org/illescasDaniel/ReadOnly)
-[![Version](https://img.shields.io/badge/release-v2.0-green.svg)](https://github.com/illescasDaniel/ReadOnly/releases)
+[![Version](https://img.shields.io/badge/release-v2.1-green.svg)](https://github.com/illescasDaniel/ReadOnly/releases)
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000)](https://github.com/illescasDaniel/ReadOnly/blob/master/LICENCE)  
 
 Manage read only members and variables with setters in C++ classes.
@@ -11,17 +11,30 @@ The first one includes methods to set values using a setter, with the other you 
 
 How to make it work
 --------
-Add your friend class in the ReadOnly/Var class.  
+Add your friend class in the ReadOnly/Var class:  
 ```C++
+
+template <typename Type, typename Friend = ReadOnlyDefaultFriend>
 class ReadOnly {
 
 	/* Friend classes */
-	friend class Foo;
+	friend class Human;
+	friend Friend;
 
 	/* ... */
 };
 ```
 
+Or use the second optional template parameter:
+```C++
+
+struct Foo {
+	ReadOnly<int,Foo> number;
+	Var<string,Foo> name;
+	
+	//...
+};
+```
 
 Basic syntax
 --------
@@ -48,7 +61,23 @@ public:
 	}
 };
 
+struct Car {
+
+	// You can optionally pass the class/struct name as a parameter so you don't need to manually friend the class
+	ReadOnly<string,Car> brand; 
+	ReadOnly<string,Car> plateNumber;
+
+	Car(const string& brand, const string& plateNumber) {
+		this->brand = brand;
+		this->plateNumber = plateNumber;
+	}
+};
+
 int main() {
+
+	Car toyota("Toyota", "123456AB");
+	cout << toyota.brand << ' ' << toyota.plateNumber << endl;
+	// toyota.brand = "another"; // Compilation ERROR
 
 	Human daniel("Daniel", 20);
 	cout << daniel.name << ' ' << daniel.age << endl;

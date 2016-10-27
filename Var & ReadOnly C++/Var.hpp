@@ -1,22 +1,24 @@
 // MIT License
 // Author: Daniel Illescas Romero (2016)
 
-#ifndef Var_hpp
-#define Var_hpp
+#pragma once
 
 #include <iostream>
 
-// Operators assignment macro
+// Operators assignment macro (MAKE PRIVATE!!)
 #define operatorAssignment(_op_, _op2_); template <typename anyType> inline auto operator _op_ (const anyType& Var) { return (*this = *this _op2_ Var); }
 
+class VarDefaultFriend{};
+
 /// Class to make Variables with an optional setter to change their values
-template <typename Type>
+template <typename Type, typename Friend = VarDefaultFriend>
 class Var {
 
 	/* FRIEND CLASSES (Important) */
+	friend Friend; // Generic friend class or struct passed as parameter
 	friend class Human;
 	
-	/* VarIABLES */
+	/* VARIABLES */
 	
 	// A setter function for the variable
 	typedef void (* setFunction)(Type& value, const Type& newValue);
@@ -71,4 +73,4 @@ public:
 	inline auto operator[](const int& index) const { return value[index]; } // For vectors
 };
 
-#endif /* Var_hpp */
+#undef operatorAssignment
