@@ -19,5 +19,6 @@ notifications:
 
 before_install: sudo apt-get update -qq
 
-script: g++-6 --version
-script: make --directory "Var & ReadOnly C++"
+script:
+- g++-6 --version
+- make --directory "Var & ReadOnly C++"
