@@ -6,6 +6,7 @@
 #include <memory>
 
 using namespace std;
+using namespace evt;
 
 // Macros examples to manage errors
 #define display_defaultError(_Variable_) cerr << "Error: value (" << _Variable_ << ") of Variable (" #_Variable_ ") doesn't satisfy setter condition" << endl
@@ -24,19 +25,19 @@ class Human {
 	}
 	
 public:
-	Var<int> age {Human::setAge, 1};		// Setter & Default value
-	Var<string> name {Human::setName};		// Setter
-	Var<string> id = "123456";				// Initialize value, alternative: id {"123456"}
-	Var<float> height = 170;
-	Var<bool> isAlien;						// Default value: false, if it's int: 0, string: "" ...
-	Var<char> chr = 'a';
+	Var<int, Human> age {Human::setAge, 1};		// Setter & Default value
+	Var<string, Human> name {Human::setName};		// Setter
+	Var<string, Human> id = "123456";				// Initialize value, alternative: id {"123456"}
+	Var<float, Human> height = 170;
+	Var<bool, Human> isAlien;						// Default value: false, if it's int: 0, string: "" ...
+	Var<char, Human> chr = 'a';
 	
 	// Arrays
-	Var<vector<int>> numbers;				// std::vector
-	Var<unique_ptr<int[]>> numbers2;		// Smart pointer (similar to "int *")
-	ReadOnly<unique_ptr<int[]>> numbers3;
+	Var<vector<int>, Human> numbers;				// std::vector
+	Var<unique_ptr<int[]>, Human> numbers2;		// Smart pointer (similar to "int *")
+	ReadOnly<unique_ptr<int[]>, Human> numbers3;
 	
-	ReadOnly<int> age2 = 1;					// Read only attribute (don't have setter)
+	ReadOnly<int, Human> age2 = 1;					// Read only attribute (don't have setter)
 	
 	Human() {
 
@@ -81,8 +82,6 @@ int main() {
 	cout << toyota.wheels << endl;
 	//toyota.brand = "another"; // Compilation ERROR
 	
-	//
-
 	Human daniel;
 	
 	cout << "Trying to assign a value to a variable (\"isAlien\") that doesn't have a setter" << endl;
@@ -146,9 +145,6 @@ int main() {
 	cout << char(toupper(daniel.chr)) << endl;
 	
 	cout << daniel.numbers[0] << ' ' << daniel.numbers[1] << endl;
-	
-	cout << "\nSize of types (bytes):\n" << "int: " << sizeof(int) << "\nReadOnly<int>: " << sizeof(ReadOnly<int>)
-	<< "\nVar<int>: " << sizeof(Var<int>) << '\n' << endl;
 	
 	cout << "Size of array types: \n" << "Var<vector<int>>: " << sizeof(daniel.numbers) << '\n'
 	<< "Var<unique_ptr<int[]>: " << sizeof(daniel.numbers2) << '\n'

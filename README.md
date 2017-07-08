@@ -1,7 +1,7 @@
 # Var-ReadOnly
 
 [![Build Status](https://travis-ci.org/illescasDaniel/Var-ReadOnly.svg?branch=master)](https://travis-ci.org/illescasDaniel/Var-ReadOnly)
-[![Version](https://img.shields.io/badge/version-v2.1-green.svg)](https://github.com/illescasDaniel/Var-ReadOnly/archive/master.zip)
+[![Version](https://img.shields.io/badge/version-v2.2-green.svg)](https://github.com/illescasDaniel/Var-ReadOnly/archive/master.zip)
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000)](https://github.com/illescasDaniel/ReadOnly/blob/master/LICENCE)  
 
 Manage read only members and variables with setters in C++ classes.
@@ -11,21 +11,8 @@ The first one includes methods to set values using a setter, with the other you 
 
 How to make it work
 --------
-Add your friend class in the ReadOnly/Var class:  
-```C++
+Declare an object of ReadOnly/Var type with two template values: the internal type and the class that will has exclusive access to modify its values:
 
-template <typename Type, typename Friend = ReadOnlyDefaultFriend>
-class ReadOnly {
-
-	/* Friend classes */
-	friend class Human; // HERE
-	friend Friend;
-
-	/* ... */
-};
-```
-
-Or use the second optional template parameter:
 ```C++
 
 struct Foo {
@@ -48,8 +35,8 @@ class Human {
 
 public:
 
-	Var<int> age {Human::setAge};
-	ReadOnly<string> name;
+	Var<int,Human> age {Human::setAge};
+	ReadOnly<string,Human> name;
 
 	Human(const string& name, const int& age) {
 		this->name = name;
@@ -63,7 +50,6 @@ public:
 
 struct Car {
 
-	// You can optionally pass the class/struct name as a parameter so you don't need to manually friend the class
 	ReadOnly<string,Car> brand; 
 	ReadOnly<string,Car> plateNumber;
 
@@ -118,4 +104,4 @@ cout << daniel.name << endl; // ERROR, name is private
 cout << daniel.getName() << endl;
 ``` 
 
-**Note**: by default constructors are private, hence you can only declare Var or ReadOnly objects inside a friend class.  
+**Note**: by default constructors are private, hence you can only declare Var or ReadOnly objects inside of a friend class.
