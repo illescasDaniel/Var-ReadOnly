@@ -33,12 +33,12 @@ namespace evt {
 		}
 			
 		/// Specify a settter function and a default value
-		inline Var(setFunction setter, const Type& Variable) : setter(setter) {
+		inline Var(setFunction setter, const Type& Variable): setter(setter) {
 			setter(value, Variable);
 		}
 			
 		/// Specify a settter function
-		inline Var(setFunction setter) : setter(setter) {
+		inline Var(setFunction setter): setter(setter) {
 			setter(value, value);
 		}
 			

@@ -80,6 +80,15 @@ int main() {
 	Car toyota("2020CE", "Toyota", 4);
 	
 	cout << toyota.wheels << endl;
+	
+	cout << string(toyota.brand).length() << endl;
+	
+	string plateNumber = toyota.plateNumber;
+	
+	cout << plateNumber << endl;
+	
+	//toyota.brand.value().length();
+	
 	//toyota.brand = "another"; // Compilation ERROR
 	
 	Human daniel;

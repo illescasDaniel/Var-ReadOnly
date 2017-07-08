@@ -48,6 +48,7 @@ namespace evt {
 		}
 		
 	public:
+		
 		inline operator Type() const {
 			return value;
 		}
