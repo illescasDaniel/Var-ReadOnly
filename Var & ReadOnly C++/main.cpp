@@ -87,8 +87,6 @@ int main() {
 	
 	cout << plateNumber << endl;
 	
-	//toyota.brand.value().length();
-	
 	//toyota.brand = "another"; // Compilation ERROR
 	
 	Human daniel;
